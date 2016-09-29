@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Buscador</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+  	<% if user_signed_in? %>
+  		<li>
+  			<%= link_to "Cerrar Sesion", destroy_user_session_path, method: :delete %>
+  		</li>
+  	<% else %>
+  		<li>
+  			<%= link_to "Iniciar Sesion", new_user_session_path %>
+  		</li>
+  		<li>
+  			<%= link_to "Crear Cuenta", new_user_registration_path %>
+  		</li>
+  	<% end %> 
+	 
+     <p class="alert"><%= alert %></p>
+
+    <%= yield %>
+  </body>
+</html>
